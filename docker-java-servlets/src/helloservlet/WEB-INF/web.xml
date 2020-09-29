@@ -8,7 +8,12 @@
  
    <servlet>
       <servlet-name>HelloWorldServlet</servlet-name>
-      <servlet-class>mypkg.HelloServlet</servlet-class>
+      <servlet-class>SSCLogin.HelloServlet</servlet-class>
+   </servlet>
+
+   <servlet>
+	   <servlet-name>Testing</servlet-name>
+	   <servlet-class>SSCLogin.TestingServlet</servlet-class>
    </servlet>
  
    <!-- Note: All <servlet> elements MUST be grouped together and
@@ -18,4 +23,10 @@
       <servlet-name>HelloWorldServlet</servlet-name>
       <url-pattern>/sayhello</url-pattern>
    </servlet-mapping>
+   <servlet-mapping>
+	   <servlet-name>Testing</servlet-name>
+	   <url-pattern>/saytesting</url-pattern>
+   </servlet-mapping>
+			   
+     
 </web-app>
