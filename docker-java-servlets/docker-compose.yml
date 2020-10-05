@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  serve:
+  web:
     build: .
     volumes:
       - ./src:/usr/local/tomcat/webapps
@@ -10,4 +10,19 @@ services:
     environment:
       APP_NAME: 'helloservlet'
       APP_CLASS: 'mypkg'
+      JDBC_URL: jdbc:mysql://db:3306/orbitaldb?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
+      JDBC_USER: orbitalpuppet
+      JDBC_PASS: orbital
+      links:
+              -db:database
     command: [ "run.sh" ]
+
+  db:
+          image: mysql:latest
+          environment:
+                  MYSQL_ROOT_PASSWORD: orbital
+                  MYSQL_DATABASE: orbitaldb
+                  MYSQL_USER: orbitalpuppet
+                  MYSQL_PASSWORD: orbital
+          volumes:
+                  - ./db:/docker-entrypoint-initdb.d
